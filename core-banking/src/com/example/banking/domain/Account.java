@@ -47,9 +47,9 @@ public class Account extends Object {
     // Ctrl + Alt + L
     public boolean withdraw(double amount) {
         // validation
-        if (amount <= 0) return false;
+        if (amount <= 0) return false; // Run-time exception
         // business rule
-        if (amount > balance) return false;
+        if (amount > balance) return false; // Business Exception
         // business logic
         // this.balance = this.balance - amount ;
         this.balance -= amount;
