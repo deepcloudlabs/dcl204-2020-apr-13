@@ -5,6 +5,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+// OOP
+// 1. Class and Object -> Encapsulation + Information Hiding
+// 2. Inheritance -> Reusability
+// 3. Polymorphism -> Agility
+// DDD : Domain-Driven Design
+// Entity : Account, Checking Account, Customer
+// Value Object: Address
+// Aggregate : Bank
+// Event Storming => Complex Domain
 public class Bank {
     private final int id; // bddk
     private String name;

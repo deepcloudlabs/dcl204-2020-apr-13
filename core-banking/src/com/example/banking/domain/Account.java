@@ -5,18 +5,19 @@ package com.example.banking.domain;
  */
 // Domain Expert
 // Domain ==> >Entity< ==> Root Entity ==> Aggregate
-public class Account extends Object {
+public class Account extends Object /* implicit */ {
     //region attributes ==> information hiding
-    private final String iban; // ==> identity
-    private double balance;
+    final String iban; // ==> identity // default permission, package private
+    protected double balance;
     //endregion
 
-    //region constructors
+    //region constructors: overloading
     public Account(String iban) {
         this(iban, 0.0);
     }
 
     public Account(String iban, double balance) {
+        super(); // implicit
         this.iban = iban;
         this.balance = balance;
     }
@@ -46,6 +47,7 @@ public class Account extends Object {
     // Alt + Shift + Up/Down Arrow
     // Ctrl + Alt + L
     public boolean withdraw(double amount) {
+        System.err.println("Account::withdraw");
         // validation
         if (amount <= 0) return false; // Run-time exception
         // business rule
