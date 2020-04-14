@@ -35,24 +35,38 @@ public class Bank {
     //endregion
 
     // business methods
-    public Customer createCustomer(String identity,String fullName){
-        //TODO: implement the logic
+    public Customer createCustomer(String identity, String fullName) {
+        Customer customer = new Customer(identity, fullName);
+        customers.add(customer);
+        return customer;
     }
 
-    public Optional<Customer> findCustomerByIdentity(String identity){
-        
+    public Optional<Customer> findCustomerByIdentity(String identity) {
+        for (Customer customer : customers) {
+            if (customer.getIdentity().equals(identity))
+                return Optional.of(customer);
+        }
+        return Optional.empty();
     }
 
-    public Optional<Customer> findCustomerByIdentity8(String identity){
-
+    public Optional<Customer> findCustomerByIdentity8(String identity) {
+        return customers.stream()
+                     .filter(cust -> cust.getIdentity().equals(identity))
+                     .findFirst();
     }
 
-    public double getTotalBalance(){
-
+    public double getTotalBalance() {
+        double sum = 0. ;
+        for (Customer customer : customers){
+            sum += customer.getTotalBalance();
+        }
+        return sum;
     }
 
-    public double getTotalBalance8(){
-
+    public double getTotalBalance8() {
+        return customers.stream()
+                .mapToDouble(Customer::getTotalBalance8)
+                .sum();
     }
 
 }
