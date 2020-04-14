@@ -36,12 +36,12 @@ public class BankApp {
         System.out.println(bank.getTotalBalance8());
 
         bank.findCustomerByIdentity("2")   // SAFE : NPE free
-            .ifPresent(   // Null Check
-               customer -> customer.findAccountByIban("TR5")
-                                   .ifPresent( account -> account.withdraw(10_000))
-            );
+                .ifPresent(   // Null Check
+                        customer -> customer.findAccountByIban("TR5")
+                                .ifPresent(account -> account.withdraw(10_000))
+                );
         Customer cust = bank.findCustomerByIdentity("3")
-                  .orElseThrow( () -> new IllegalArgumentException("No such customer!"));
+                .orElseThrow(() -> new IllegalArgumentException("No such customer!"));
         System.out.println(cust.getFullName()); // NPE free : SAFE
         System.out.println(bank.getTotalBalance8());
     }

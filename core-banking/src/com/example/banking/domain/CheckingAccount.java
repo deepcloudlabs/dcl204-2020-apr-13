@@ -1,4 +1,8 @@
 package com.example.banking.domain;
+
+/**
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ */
 // Account : super class/base class
 // CheckingAccount : sub-class / derived class
 // Overloading vs Overriding
@@ -25,9 +29,9 @@ public class CheckingAccount extends Account {
     public boolean withdraw(double amount) {
         System.err.println("CheckingAccount::withdraw");
         // validation
-        if (amount<=0.) return false;
+        if (amount <= 0.) return false;
         // business rule
-        if (amount > (balance+overdraftAmount)) return false;
+        if (amount > (balance + overdraftAmount)) return false;
         balance -= amount;
         return false;
     }

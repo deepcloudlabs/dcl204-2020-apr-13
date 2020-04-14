@@ -51,8 +51,8 @@ public class Customer {
     // javadoc : internal documentation ==> browsable html
     /**
      *
-     * @param iban
-     * @return
+     * @param iban IBAN Number
+     * @return Returns account
      */
     public Optional<Account> findAccountByIban(String iban){
         // NPE: NullPointerException
