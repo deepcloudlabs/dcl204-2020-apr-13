@@ -1,5 +1,8 @@
 package com.example;
 
+/**
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ */
 public class StudyIntanceOfAndInterface {
     public static void main(String[] args) {
         A a = new B();
@@ -14,7 +17,8 @@ class A {
 class B extends A {
 }
 
-class C  {
+class C {
 }
 
-interface X {}
+interface X {
+}
