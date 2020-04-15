@@ -12,11 +12,11 @@ package com.example.banking.domain;
 public class CheckingAccount extends Account {
     private double overdraftAmount;
 
-    public CheckingAccount(String iban, double balance) {
+    public CheckingAccount(final String iban,final double balance) {
         this(iban, balance, 1_000);
     }
 
-    public CheckingAccount(String iban, double balance, double overdraftAmount) {
+    public CheckingAccount(final String iban, final double balance,final double overdraftAmount) {
         super(iban, balance); // super class constructor
         this.overdraftAmount = overdraftAmount;
     }
@@ -26,7 +26,7 @@ public class CheckingAccount extends Account {
     }
 
     @Override
-    public boolean withdraw(double amount) {
+    public boolean withdraw(final double amount) {
         System.err.println("CheckingAccount::withdraw");
         // validation
         if (amount <= 0.) return false;

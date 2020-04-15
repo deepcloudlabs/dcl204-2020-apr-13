@@ -11,10 +11,10 @@ import java.util.Optional;
 public class Customer {
     private final String identity;
     private String fullName;
-    private List<Account> accounts;
+    private final List<Account> accounts;
 
     //region constructors
-    public Customer(String identity, String fullName) {
+    public Customer(final String identity, final String fullName) {
         this.identity = identity;
         this.fullName = fullName;
         accounts = new ArrayList<>(); // empty list
@@ -31,7 +31,7 @@ public class Customer {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
+    public void setFullName(final String fullName) {
         this.fullName = fullName;
     }
     //endregion
@@ -43,43 +43,44 @@ public class Customer {
     }
 
     // business methods
-    public void addAccount(Account account){
-        accounts.add(account) ; // composition: accounts (List), Delegation
+    public void addAccount(final Account account) {
+        accounts.add(account); // composition: accounts (List), Delegation
     }
 
     // javac
     // javadoc : internal documentation ==> browsable html
+
     /**
-     *
      * @param iban IBAN Number
      * @return Returns account
      */
-    public Optional<Account> findAccountByIban(String iban){
+    public Optional<Account> findAccountByIban(final String iban) {
         // NPE: NullPointerException
-        for (Account acc : accounts){ // External Loop
+        for (Account acc : accounts) { // External Loop
             if (acc.getIban().equals(iban))
                 return Optional.of(acc);
         }
         return Optional.empty();
     }
 
-    public Optional<Account> findAccountByIban8(String iban){
+    public Optional<Account> findAccountByIban8(final String iban) {
         // Lambda Expression
         // Stream API .parallel() => Java SE 7 : ForkJoin Framework : Data Parallelism
         // Internal Loop
-        return accounts.stream().filter( acc -> acc.getIban().equals(iban)).parallel().findFirst();
+        return accounts.stream().filter(acc -> acc.getIban().equals(iban)).parallel().findFirst();
     }
 
-    public double getTotalBalance(){
-        double sum = 0. ;
+    public double getTotalBalance() {
+        double sum = 0.;
         for (Account acc : accounts) { // External Loop
             sum += acc.getBalance();
         }
         return sum;
     }
-    public double getTotalBalance8(){
+
+    public double getTotalBalance8() {
         return accounts.stream()
-                       .mapToDouble( Account::getBalance )
-                       .sum();
+                .mapToDouble(Account::getBalance)
+                .sum();
     }
 }

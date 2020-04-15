@@ -17,7 +17,7 @@ import java.util.Optional;
 public class Bank {
     private final int id; // bddk
     private String name;
-    private List<Customer> customers;
+    private final List<Customer> customers;
 
     public Bank(int id, String name) {
         this.id = id;
@@ -44,13 +44,13 @@ public class Bank {
     //endregion
 
     // business methods
-    public Customer createCustomer(String identity, String fullName) {
+    public Customer createCustomer(final String identity,final String fullName) {
         Customer customer = new Customer(identity, fullName);
         customers.add(customer);
         return customer;
     }
 
-    public Optional<Customer> findCustomerByIdentity(String identity) {
+    public Optional<Customer> findCustomerByIdentity(final String identity) {
         for (Customer customer : customers) {
             if (customer.getIdentity().equals(identity))
                 return Optional.of(customer);
@@ -58,7 +58,7 @@ public class Bank {
         return Optional.empty();
     }
 
-    public Optional<Customer> findCustomerByIdentity8(String identity) {
+    public Optional<Customer> findCustomerByIdentity8(final String identity) {
         return customers.stream()
                      .filter(cust -> cust.getIdentity().equals(identity))
                      .findFirst();

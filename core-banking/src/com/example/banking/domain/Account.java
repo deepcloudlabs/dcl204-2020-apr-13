@@ -9,14 +9,15 @@ public class Account extends Object /* implicit */ {
     //region attributes ==> information hiding
     final String iban; // ==> identity // default permission, package private
     protected double balance;
+    private AccountStatus status ;
     //endregion
 
     //region constructors: overloading
-    public Account(String iban) {
+    public Account(final String iban) {
         this(iban, 0.0);
     }
 
-    public Account(String iban, double balance) {
+    public Account(final String iban,final double balance) {
         super(); // implicit
         this.iban = iban;
         this.balance = balance;
@@ -24,6 +25,15 @@ public class Account extends Object /* implicit */ {
     //endregion
 
     //region getters
+
+    public AccountStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AccountStatus status) {
+                this.status = status;
+    }
+
     public String getIban() {
         return iban;
     }
@@ -34,7 +44,7 @@ public class Account extends Object /* implicit */ {
     //endregion
 
     //region business methods
-    public boolean deposit(double amount) {
+    public boolean deposit(final double amount) {
         // validation
         if (amount <= 0) return false;
         // business logic
@@ -46,7 +56,7 @@ public class Account extends Object /* implicit */ {
     // Ctrl + D : Duplicate
     // Alt + Shift + Up/Down Arrow
     // Ctrl + Alt + L
-    public boolean withdraw(double amount) {
+    public boolean withdraw(final double amount) {
         System.err.println("Account::withdraw");
         // validation
         if (amount <= 0) return false; // Run-time exception
