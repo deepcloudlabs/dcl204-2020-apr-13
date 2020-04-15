@@ -1,9 +1,6 @@
 package com.example.banking.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 // OOP
 // 1. Class and Object -> Encapsulation + Information Hiding
@@ -17,12 +14,12 @@ import java.util.Optional;
 public class Bank {
     private final int id; // bddk
     private String name;
-    private final List<Customer> customers;
+    private final Map<String,Customer> customers;
 
     public Bank(int id, String name) {
         this.id = id;
         this.name = name;
-        customers = new ArrayList<>();
+        customers = new HashMap<>();
     }
 
     //region getters/setters
@@ -38,42 +35,38 @@ public class Bank {
         this.name = name;
     }
 
-    public List<Customer> getCustomers() {
-        return Collections.unmodifiableList(customers);
+    public Collection<Customer> getCustomers() {
+        return customers.values();
     }
     //endregion
 
     // business methods
     public Customer createCustomer(final String identity,final String fullName) {
         Customer customer = new Customer(identity, fullName);
-        customers.add(customer);
+        customers.put(customer.getIdentity(),customer);
         return customer;
     }
 
     public Optional<Customer> findCustomerByIdentity(final String identity) {
-        for (Customer customer : customers) {
-            if (customer.getIdentity().equals(identity))
-                return Optional.of(customer);
-        }
-        return Optional.empty();
+        return Optional.ofNullable(customers.get(identity));
     }
 
     public Optional<Customer> findCustomerByIdentity8(final String identity) {
-        return customers.stream()
+        return customers.values().stream()
                      .filter(cust -> cust.getIdentity().equals(identity))
                      .findFirst();
     }
 
     public double getTotalBalance() {
         double sum = 0. ;
-        for (Customer customer : customers){
+        for (Customer customer : customers.values()){
             sum += customer.getTotalBalance();
         }
         return sum;
     }
 
     public double getTotalBalance8() {
-        return customers.stream()
+        return customers.values().stream()
                 .mapToDouble(Customer::getTotalBalance8)
                 .sum();
     }
