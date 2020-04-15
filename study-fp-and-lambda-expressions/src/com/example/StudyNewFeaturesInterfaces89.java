@@ -1,5 +1,8 @@
 package com.example;
 
+/**
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ */
 public class StudyNewFeaturesInterfaces89 {
     public static void main(String[] args) {
         // Java SE 8
