@@ -9,7 +9,7 @@ public class Account extends Object /* implicit */ {
     //region attributes ==> information hiding
     final String iban; // ==> identity // default permission, package private
     protected double balance;
-    private AccountStatus status ;
+    private AccountStatus status;
     //endregion
 
     //region constructors: overloading
@@ -17,7 +17,7 @@ public class Account extends Object /* implicit */ {
         this(iban, 0.0);
     }
 
-    public Account(final String iban,final double balance) {
+    public Account(final String iban, final double balance) {
         super(); // implicit
         this.iban = iban;
         this.balance = balance;
@@ -31,7 +31,7 @@ public class Account extends Object /* implicit */ {
     }
 
     public void setStatus(AccountStatus status) {
-                this.status = status;
+        this.status = status;
     }
 
     public String getIban() {

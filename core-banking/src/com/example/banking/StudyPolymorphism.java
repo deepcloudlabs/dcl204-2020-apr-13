@@ -5,6 +5,9 @@ import com.example.banking.domain.CheckingAccount;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ */
 // Object Header : 12 Byte, VT Reference
 // Polymorphism: Run-time Mechanism -> Virtual Table
 // 1: Inheritance
@@ -17,10 +20,10 @@ public class StudyPolymorphism {
         Object o;
         o = 42; // 12+4 = 16 Byte
         o = Integer.valueOf(42);
-        o = new int[]{1,2,3,4,5,6};
+        o = new int[]{1, 2, 3, 4, 5, 6};
         o = "Jack Bauer";
         o = '\u20BA';
-        o = new  Account("TR1", 1_000_000);
+        o = new Account("TR1", 1_000_000);
         Account account;
         if (ThreadLocalRandom.current().nextBoolean())
             account = new Account("TR1", 1_000_000);
@@ -32,4 +35,5 @@ public class StudyPolymorphism {
     }
 }
 
-class A {}
+class A {
+}

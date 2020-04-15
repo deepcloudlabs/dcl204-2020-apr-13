@@ -2,6 +2,9 @@ package com.example.banking.domain;
 
 import java.util.*;
 
+/**
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ */
 // OOP
 // 1. Class and Object -> Encapsulation + Information Hiding
 // 2. Inheritance -> Reusability

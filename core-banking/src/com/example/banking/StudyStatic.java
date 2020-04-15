@@ -2,6 +2,9 @@ package com.example.banking;
 
 import java.util.stream.IntStream;
 
+/**
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ */
 // 1. static field
 // 2. static method
 // Design: Utility class -> Objects, Files, Paths, Executors, Collectors, Collections
@@ -11,18 +14,18 @@ import java.util.stream.IntStream;
 public class StudyStatic {
     public static void main(String[] args) {
         System.out.println(U.getCounter());
-        IntStream.range(0, 10_000).forEach( i -> new U(i));
+        IntStream.range(0, 10_000).forEach(i -> new U(i));
         System.out.println(U.getCounter());
     }
 }
 
 class U {
-    private int i ;
+    private int i;
     private static int counter = 0;
 
     // static method can only access to static attributes
     public static int getCounter() {
-        return counter ;
+        return counter;
     }
 
     // non-static method ==> non-static field + static field
@@ -31,7 +34,7 @@ class U {
         counter++;
     }
 
-    public int fun(){
-        return i + counter ;
+    public int fun() {
+        return i + counter;
     }
 }

@@ -1,5 +1,8 @@
 package com.example.banking;
 
+/**
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ */
 // final
 // 1. Inheritance
 //    a) public final class A {}
