@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ */
 // Benchmarking -> MicroBenchmarking ???
 public class StudyList {
     public static void main(String[] args) {

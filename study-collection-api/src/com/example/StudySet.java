@@ -2,11 +2,14 @@ package com.example;
 
 import java.util.*;
 
+/**
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ */
 public class StudySet {
     public static void main(String[] args) {
         //Set<Integer> set = new HashSet<>(); // Order: chaotic
         //Set<Integer> set = new LinkedHashSet<>(); // Order: insertion
-        Set<Integer> set = new TreeSet<>((x,y)->y-x); // Order: sorted (Red-Black Tree)
+        Set<Integer> set = new TreeSet<>((x, y) -> y - x); // Order: sorted (Red-Black Tree)
         // Alt + Shift + Insert : switch to Column Selection Mode
         set.add(4);
         set.add(8);
