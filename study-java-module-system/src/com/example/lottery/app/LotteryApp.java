@@ -3,6 +3,10 @@ package com.example.lottery.app;
 import com.example.lottery.service.LotteryService;
 import com.example.random.service.RandomNumberService;
 import java.util.ServiceLoader;
+
+/**
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ */
 // (1) OSGI : bundle (i) version (ii) OSGI runtime -> Hot-plug
 //     Enterprise OSGI
 //     OSGIfy
