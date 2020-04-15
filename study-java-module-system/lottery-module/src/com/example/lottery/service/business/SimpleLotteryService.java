@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 public class SimpleLotteryService implements LotteryService {
     private RandomNumberService randomNumberService;
 
+    @Override
     public void setRandomNumberService(RandomNumberService randomNumberService) {
         this.randomNumberService = randomNumberService;
     }
