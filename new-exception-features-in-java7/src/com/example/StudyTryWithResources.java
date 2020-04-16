@@ -3,6 +3,9 @@ package com.example;
 import java.io.Closeable;
 import java.io.IOException;
 
+/**
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ */
 public class StudyTryWithResources {
 
     public static int fun() {
@@ -26,10 +29,10 @@ public class StudyTryWithResources {
         // try-catch-finally
         // try-with-resources (Java 7)
         try (
-            PreciousResource res1 = new PreciousResource(1);
-            PreciousResource res2 = new PreciousResource(2);
-            PreciousResource res3 = new PreciousResource(3);
-        ){
+                PreciousResource res1 = new PreciousResource(1);
+                PreciousResource res2 = new PreciousResource(2);
+                PreciousResource res3 = new PreciousResource(3);
+        ) {
             System.err.println(fun());
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -59,6 +62,9 @@ public class StudyTryWithResources {
     }
 }
 
+/**
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ */
 class PreciousResource implements Closeable {
     private final int id;
 
