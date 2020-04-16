@@ -44,28 +44,31 @@ public class Account extends Object /* implicit */ {
     //endregion
 
     //region business methods
-    public boolean deposit(final double amount) {
+    public void deposit(final double amount) {
         // validation
-        if (amount <= 0) return false;
+        if (amount <= 0)
+            throw new IllegalArgumentException("Amount must be positive!");
         // business logic
         // this.balance = this.balance + amount ;
         this.balance += amount;
-        return true;
     }
 
     // Ctrl + D : Duplicate
     // Alt + Shift + Up/Down Arrow
     // Ctrl + Alt + L
-    public boolean withdraw(final double amount) {
+    // IllegalArgumentException -> (1) RuntimeException -> Uncheck Exception -> Do not declare Runtime Exceptions
+    // InsufficientBalanceException -> (2) Business Exception -> Exception -> Check Exception
+    public void withdraw(final double amount) throws InsufficientBalanceException {
         System.err.println("Account::withdraw");
         // validation
-        if (amount <= 0) return false; // Run-time exception
+        if (amount <= 0)
+            throw new IllegalArgumentException("Amount must be positive!");
         // business rule
-        if (amount > balance) return false; // Business Exception
+        if (amount > balance)
+            throw new InsufficientBalanceException("Your balance does not cover your expenses!",amount-balance);
         // business logic
         // this.balance = this.balance - amount ;
         this.balance -= amount;
-        return true;
     }
     //endregion
 

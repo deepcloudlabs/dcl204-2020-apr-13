@@ -3,6 +3,7 @@ package com.example.banking;
 import com.example.banking.domain.Account;
 import com.example.banking.domain.Bank;
 import com.example.banking.domain.Customer;
+import com.example.banking.domain.InsufficientBalanceException;
 
 /**
  * @author Binnur Kurt <binnur.kurt@gmail.com>
@@ -17,10 +18,14 @@ public class BankApp {
                 new Account("TR1", 5_000_000); // uninitialized!
         acc.deposit(1_000_000);
         System.out.println(acc.getBalance());
-        acc.withdraw(4_000_000);
-        System.out.println(acc.getBalance());
-        acc.withdraw(3_000_000);
-        System.out.println(acc.toString());
+        try {
+            acc.withdraw(4_000_000);
+            System.out.println(acc.getBalance());
+            acc.withdraw(3_000_000);
+            System.out.println(acc.toString());
+        }  catch (InsufficientBalanceException e) {
+            System.err.println(e.getDeficit());
+        }
 
         Bank bank = new Bank(1, "My Bank");
         Customer jack = bank.createCustomer("1", "Jack Bauer");
@@ -38,7 +43,13 @@ public class BankApp {
         bank.findCustomerByIdentity("2")   // SAFE : NPE free
                 .ifPresent(   // Null Check
                         customer -> customer.findAccountByIban("TR5")
-                                .ifPresent(account -> account.withdraw(10_000))
+                                .ifPresent(account -> {
+                                    try {
+                                        account.withdraw(10_000);
+                                    } catch (InsufficientBalanceException e) {
+                                        System.err.println(e.getDeficit());
+                                    }
+                                })
                 );
         Customer cust = bank.findCustomerByIdentity("3")
                 .orElseThrow(() -> new IllegalArgumentException("No such customer!"));

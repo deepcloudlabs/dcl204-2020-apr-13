@@ -2,6 +2,7 @@ package com.example.banking;
 
 import com.example.banking.domain.Account;
 import com.example.banking.domain.CheckingAccount;
+import com.example.banking.domain.InsufficientBalanceException;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -14,7 +15,7 @@ import java.util.concurrent.ThreadLocalRandom;
 // 2: Super Class Reference --> Account
 // 3: Polymorphic (business method) -> withdraw, deposit
 public class StudyPolymorphism {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InsufficientBalanceException {
         int x = 42; // primitive -> int -> 4 Byte
         Integer y = 42; // 16 Byte (heap) + 4 Byte (Stack) = 20 Byte
         Object o;
