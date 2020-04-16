@@ -5,12 +5,15 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
+/**
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ */
 public class RandomNumberGenerator {
     public static void generate(Object o) throws IllegalAccessException {
-         // Reflection API
+        // Reflection API
         Class<?> clazz = o.getClass();
-        for (Field field : clazz.getDeclaredFields()){
-            if (field.isAnnotationPresent(RandomNumber.class)){
+        for (Field field : clazz.getDeclaredFields()) {
+            if (field.isAnnotationPresent(RandomNumber.class)) {
                 // Read annotation
                 RandomNumber rn = field.getAnnotation(RandomNumber.class);
                 int min = rn.min();
@@ -23,7 +26,7 @@ public class RandomNumberGenerator {
                         .boxed()
                         .collect(Collectors.toList());
                 field.setAccessible(true);
-                field.set(o,numbers);
+                field.set(o, numbers);
                 field.setAccessible(false);
             }
         }
