@@ -58,7 +58,7 @@ class AlgoTrader implements Flow.Subscriber<TradeEvent> {
 
     @Override
     public void onNext(TradeEvent tradeEvent) {
-        System.err.println("AlgoTrader: " +Thread.currentThread().getName());
+        System.err.println("AlgoTrader: " + Thread.currentThread().getName());
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
@@ -95,7 +95,7 @@ class SignalProcessor implements Flow.Subscriber<TradeEvent> {
 
     @Override
     public void onNext(TradeEvent tradeEvent) {
-        System.err.println("SignalProcessor: " +Thread.currentThread().getName());
+        System.err.println("SignalProcessor: " + Thread.currentThread().getName());
         System.err.println("SignalProcessor: " + tradeEvent);
         this.subscription.request(2);
     }
